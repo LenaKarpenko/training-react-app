@@ -5,15 +5,16 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "Some setup job"
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: v16.15.0
       - run: npm ci
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
       - run: npm run build
   test:
     needs: build
