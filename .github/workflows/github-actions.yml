@@ -2,7 +2,7 @@ name: learn_github_actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: push
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -10,8 +10,13 @@ jobs:
         with:
           node-version: v16.15.0
       - run: npm ci
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - run: npm run build
-  test: 
+  test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - run: echo "This job is running"
