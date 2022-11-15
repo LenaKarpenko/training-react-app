@@ -1,5 +1,5 @@
 function App() {
-  return <div>Training app</div>;
+  return <div>Training React App</div>;
 }
 
 export default App;
