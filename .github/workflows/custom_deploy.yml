@@ -1,8 +1,8 @@
 name: Deploy app
 on:
-  push:
-    branches:
-      - main
+  # push:
+  pull_request:
+    types: [closed]
 jobs:
   build:
     name: Build
